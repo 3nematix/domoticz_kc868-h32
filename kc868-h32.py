@@ -9,9 +9,9 @@ import pprint
 import socket
 import time
 
-os.system('clear') # for mac os, if you using windows change it to - cls
+os.system('clear')  # for mac os, if you using windows change it to - cls
 
-edsIP = "192.168.11.4"  # IP address of your KC868-H32 device.
+edsIP = "192.168.1.4"  # IP address of your KC868-H32 device.
 edsPORT = 4196  # PORT of your device.
 
 domoticzIP = '192.168.1.124'
@@ -107,6 +107,7 @@ while True:
 
         response = Domoticz_req.send_requests(urls)
         urls = []  # Empty the list.
+        print('1/3 Input check done.')
 
         # Update 32 Relays statuses by real-time, in domoticz.
         for relay in range(1, 33):
@@ -155,6 +156,7 @@ while True:
 
                     response = Domoticz_req.send_requests(urls_list)
                     urls_list = []
+                    print('2/3 Input check done.')
 
 
                 RELAY_INPUT = f"RELAY-READ-255,{relay}"
@@ -211,6 +213,7 @@ while True:
 
             response = Domoticz_req.send_requests(urls_list)
             urls_list = []
+            print('3/3 Input check done.')
 
             break
 
